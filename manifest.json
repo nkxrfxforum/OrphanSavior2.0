@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "台服孤兒救星 2.0",
+  "version": "2.0",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://pathofexile.tw/trade2/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["keywords.json"],
+      "matches": ["https://pathofexile.tw/*"]
+    }
+  ]
+}
