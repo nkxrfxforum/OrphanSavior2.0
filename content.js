@@ -57,9 +57,14 @@ function replaceKeywordsInDocument(doc, keywordPairs) {
       for (; index < end; index++) {
         const node = textNodes[index];
         let text = node.nodeValue;
+        const regexIDCheck = /.*?\#\d*/;
+        if (!regexIDCheck.test(text)) {
+          // 沒有# 且 #後面沒有數字 的字段全部視為非ID  不比對
+          continue;
+        }
         for (let original in keywordPairs) {
           const replacement = keywordPairs[original];
-          const regex = new RegExp(`\\b${original}\\b`, 'gi');
+          const regex = new RegExp(`^${original}$`, "gi");
           if (regex.test(text)) {
             text = text.replace(regex, replacement);
           }
